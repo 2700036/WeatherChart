@@ -31,7 +31,15 @@ export default openWeatherApi;
 
 
 
-
+// this._getWeather({ lon, lat })
+//         .then(res=> {
+//           const _id = name+'&'+lon+'&'+lat;
+          
+//           return { name, description, _id, ...res }})
+//           .catch(err => {
+//             console.log(err)
+//           throw err
+//           })
 
 
 // getWeather({lat, lon}){

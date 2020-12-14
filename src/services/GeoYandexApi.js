@@ -1,9 +1,8 @@
-import openWeatherApi from './OpenWeatherApi';
 
 class GeoYandexApi {
-  constructor(APIkey, getWeather) {
+  constructor(APIkey) {
     this._APIkey = APIkey;
-    this._getWeather = getWeather;
+    
   }
 
   getCoords = (searchString) => {    
@@ -20,16 +19,8 @@ class GeoYandexApi {
           description,
           Point: { pos },
         } = res.response.GeoObjectCollection.featureMember[0].GeoObject;
-        const [lon, lat] = pos.split(' ');
-        return this._getWeather({ lon, lat })
-        .then(res=> {
-          const _id = name+'&'+lon+'&'+lat;
-          
-          return { name, description, _id, ...res }})
-          .catch(err => {
-            console.log(err)
-          throw err
-          })
+        const [lng, lat] = pos.split(' ');
+        return {lat, lng}
         })
         
         
@@ -37,4 +28,4 @@ class GeoYandexApi {
   }
 }
 
-export const geoApi = new GeoYandexApi('957a067b-e592-4d17-8392-b70e6f96eb76', openWeatherApi.getWeather);
+export const geoApi = new GeoYandexApi('957a067b-e592-4d17-8392-b70e6f96eb76');
