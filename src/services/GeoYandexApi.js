@@ -19,8 +19,8 @@ class GeoYandexApi {
           description,
           Point: { pos },
         } = res.response.GeoObjectCollection.featureMember[0].GeoObject;
-        const [lng, lat] = pos.split(' ');
-        return {lat, lng}
+        const [lon, lat] = pos.split(' ');
+        return {lat, lon}
         })
         
         
